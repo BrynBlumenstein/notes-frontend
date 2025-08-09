@@ -1,0 +1,14 @@
+{
+  "notes": [
+    {
+      "id": "1",
+      "content": "This wont appear anymore",
+      "important": true
+    },
+    {
+      "id": "2",
+      "content": "Neither will this",
+      "important": false
+    }
+  ]
+}
