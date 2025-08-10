@@ -21,8 +21,6 @@ const App = () => {
 		return null;
 	}
 
-  console.log(notes);
-
 	return (
 		<>
 			<h1>Notes</h1>
