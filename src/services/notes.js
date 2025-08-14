@@ -1,15 +1,32 @@
 import axios from 'axios';
 const baseUrl = '/api/notes';
 
-const extractData = (request) => request.then((response) => response.data);
+let token = null;
 
-const getAll = () => extractData(axios.get(baseUrl));
+const setToken = (newToken) => {
+	token = `Bearer ${newToken}`;
+};
 
-const create = (newObject) => extractData(axios.post(baseUrl, newObject));
+const extractData = async (request) => {
+	const response = await request;
+	return response.data;
+};
 
-const update = (id, newObject) =>
-	extractData(axios.put(`${baseUrl}/${id}`, newObject));
+const getAll = async () => await extractData(axios.get(baseUrl));
 
-const remove = (id) => extractData(axios.delete(`${baseUrl}/${id}`))
+const create = async (newObject) => {
+	const config = {
+		headers: { Authorization: token }
+	};
 
-export default { getAll, create, update, remove };
+	const data = await extractData(axios.post(baseUrl, newObject, config));
+	return data;
+};
+
+const update = async (id, newObject) =>
+	await extractData(axios.put(`${baseUrl}/${id}`, newObject));
+
+const remove = async (id) =>
+	await extractData(axios.delete(`${baseUrl}/${id}`));
+
+export default { getAll, create, update, remove, setToken };
