@@ -1,7 +1,5 @@
-const Filter = ({ showAll, setShowAll }) => (
-	<button onClick={() => setShowAll(!showAll)}>
-		show {showAll ? 'important' : 'all'}
-	</button>
+const Filter = ({ onToggleFilter, label }) => (
+	<button onClick={onToggleFilter}>{label}</button>
 );
 
 export default Filter;
