@@ -22,11 +22,11 @@ const Togglable = ({ buttonLabel, ref, children }) => {
 	return (
 		<div>
 			<div style={hideWhenVisible}>
-				<button onClick={toggleVisiblity}>{buttonLabel}</button>
+				<button onClick={toggleVisiblity} data-testid="show-button">{buttonLabel}</button>
 			</div>
-			<div style={showWhenVisible}>
+			<div style={showWhenVisible} data-testid="togglable-content">
 				{children}
-				<button onClick={toggleVisiblity}>cancel</button>
+				<button onClick={toggleVisiblity} data-testid="hide-button">cancel</button>
 			</div>
 		</div>
 	);
