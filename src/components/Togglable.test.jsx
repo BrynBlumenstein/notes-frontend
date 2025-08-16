@@ -4,13 +4,13 @@ import userEvent from '@testing-library/user-event';
 import Togglable from './Togglable';
 
 describe('<Togglable />', () => {
-	beforeEach(() => {
+	beforeEach(() =>
 		render(
 			<Togglable>
 				<div>togglable content</div>
 			</Togglable>
-		);
-	});
+		)
+	);
 
 	test('renders its children', async () => {
 		await screen.findAllByText('togglable content');
@@ -30,14 +30,14 @@ describe('<Togglable />', () => {
 		expect(element).not.toHaveStyle('display: none');
 	});
 
-    test('toggled content can be hidden', async () => {
-        const user = userEvent.setup();
-        const showButton = screen.getByTestId('show-button');
+	test('toggled content can be hidden', async () => {
+		const user = userEvent.setup();
+		const showButton = screen.getByTestId('show-button');
 		await user.click(showButton);
-        const hideButton = screen.getByTestId('hide-button');
-        await user.click(hideButton);
+		const hideButton = screen.getByTestId('hide-button');
+		await user.click(hideButton);
 
-        const element = screen.getByTestId('togglable-content');
-        expect(element).toHaveStyle('display: none');
-    });
+		const element = screen.getByTestId('togglable-content');
+		expect(element).toHaveStyle('display: none');
+	});
 });
